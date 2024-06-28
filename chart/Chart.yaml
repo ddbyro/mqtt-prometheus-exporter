@@ -1,0 +1,4 @@
+apiVersion: v2
+name: mqtt-prometheus-metrics
+description: A Helm chart for your MQTT Prometheus Exporter application
+version: 0.1.0

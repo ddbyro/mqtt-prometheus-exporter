@@ -1,0 +1,24 @@
+replicaCount: 2
+
+image:
+  repository: <registry>/mqtt-prometheus-metrics
+  pullPolicy: IfNotPresent
+  tag: "1.0.4"
+
+service:
+  type: ClusterIP
+  port: 8088
+
+serviceMonitor:
+  enabled: true
+  interval: 30s
+  path: /metrics
+  dropLabels: pod|nstance
+
+gateway: <gateway>
+
+domain: <gateway>
+
+configmap:
+  name: mqtt-prometheus-metrics
+  mqtt_broker_url: 192.168.0.191

@@ -1,0 +1,6 @@
+paho-mqtt==1.6.1
+prometheus_client==0.20.0
+flask==3.0.3
+PyYAML==6.0
+gunicorn==22.0.0
+werkzeug==3.0.3

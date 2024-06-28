@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "mqtt-prometheus-metrics.fullname" . }}
+  namespace: default
+  labels:
+    {{- include "mqtt-prometheus-metrics.labels" . | nindent 4 }}
+spec:
+  gateways:
+    - {{ .Values.gateway }}
+  hosts:
+    - "{{ include "mqtt-prometheus-metrics.fullname" . }}.{{ .Values.domain }}"
+  http:
+    - route:
+        - destination:
+            host: {{ include "mqtt-prometheus-metrics.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
+            port:
+              number: {{ .Values.service.port }}
