@@ -16,3 +16,4 @@ EXPOSE 8088
 
 # Run gunicorn when the container launches
 CMD ["gunicorn", "-b", "0.0.0.0:8088", "mqtt_prometheus_exporter:app"]
+
