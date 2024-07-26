@@ -2,8 +2,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'Containerfile'
+#    paths:
+#      - 'Containerfile'
 
 jobs:
   build:
