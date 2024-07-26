@@ -32,4 +32,3 @@ jobs:
           tags: cr.dbyron.net/mqtt-prometheus-metrics:1.0.4
 #          cache-from: type=gha,src=/tmp/.buildx-cache
 #          cache-to: type=gha,dest=/tmp/.buildx-cache
-
