@@ -19,7 +19,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: .Containerfile
           platforms: linux/amd64,linux/arm64
           push: false
           tags: cr.dbyron.net/mqtt-prometheus-metrics:1.0.4
