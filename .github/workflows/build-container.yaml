@@ -12,15 +12,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-#
-#      - name: Cache Docker layers
-#        id: cache
-#        uses: actions/cache@v3
-#        with:
-#          path: /tmp/.buildx-cache
-#          key: ${{ runner.os }}-buildx-${{ github.sha }}
-#          restore-keys: |
-#            ${{ runner.os }}-buildx-
+
+      - name: Cache python dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('src/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - uses: actions/setup-python@v5
         with:
@@ -39,5 +39,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: false
           tags: cr.dbyron.net/mqtt-prometheus-metrics:1.0.4
-          cache-from: type=gha,src=.buildx-cache
-          cache-to: type=gha,dest=.buildx-cache
+          cache-from: type=gha,src=~/.cache/buildx-cache
+          cache-to: type=gha,dest=~/.cache/buildx-cache
+
+
